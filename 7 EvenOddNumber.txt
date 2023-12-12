@@ -1,0 +1,85 @@
+Class 1:Number
+public class Number 
+{
+	public <T> Boolean IsEvenOdd(T a)
+	{
+		if(Integer.parseInt(a.toString())%2==0)
+			return true;
+		else
+			return false;
+	}
+	public <T> Boolean IsPrime(T a)
+	{
+		int b=Integer.parseInt(a.toString());
+		boolean q=true;
+		if(b==1||b==2)
+			return true;
+		for(int i=3;i<b;i++)
+		{
+			if(b%i==0)
+				q=false;	
+		}
+		return q;
+	}
+	public <T> Boolean IsPalindrome(T s)
+	{
+		String s1=(String)s;
+		StringBuffer qw=new StringBuffer(s1);
+		String qq=new String(qw.reverse());
+		if(s1.equals(qq))
+			return true;
+		else
+			return false;
+	}
+}
+-------------------------------------------------------------------
+Class 2:TestNumber
+import java.util.Scanner;
+public class TestNumber 
+{
+	public static void main(String[] args) 
+	{
+		int p,m;
+		String o;
+		Scanner sc=new Scanner(System.in);
+		Number v=new Number();
+		do 
+		{
+			System.out.println("1:for even-odd num");
+			System.out.println("2:for prime num");
+			System.out.println("3:for palindrome");
+			System.out.println("4:for exiting");
+			p=sc.nextInt();
+			switch(p) 
+			{
+			case 1: System.out.println("enter num:");
+					m=sc.nextInt();
+					if(v.IsEvenOdd(m))
+						System.out.println("num is even");
+					else
+						System.out.println("num is odd");
+					break;
+			case 2: System.out.println("enter num:");
+					m=sc.nextInt();
+					if(v.IsPrime(m))
+						System.out.println("num is prime");
+					else
+						System.out.println("num is not prime");
+					break;
+			case 3: System.out.println("enter num:");
+					o=sc.next();
+					if(v.IsPalindrome(o))
+						System.out.println("num is palindrome");
+					else
+						System.out.println("num is not palindrome");
+					break;
+			case 4:
+					System.out.println("program terminated");
+					break;
+			default:System.out.println("invalild choice");		
+			}
+		}while(p!=4);
+		sc.close();
+	}
+
+}

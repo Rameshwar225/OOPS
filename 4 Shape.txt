@@ -1,0 +1,104 @@
+Class 1:Shape
+public abstract class Shape 
+{
+	double b,h;
+	public Shape()
+	{
+		b=h=0;
+	}
+	public Shape(double b)
+	{
+		this.b=b;
+		h=b;
+	}
+	public Shape(double b,double h)
+	{
+		this.h=h;
+		this.b=b;
+	}
+	public abstract double area();
+	public double getH()
+	{
+		return h;
+	}
+	public double getB()
+	{
+		return b;
+	}
+}
+-------------------------------------------------------------------------------
+Class 2:Rectangle
+public class Rectangle extends Shape
+{
+	double a;
+	public Rectangle()
+	{
+		
+	}
+	public Rectangle(double b)
+	{
+		super(b);
+	}
+	public double area()
+	{
+		a=getB()*getB();
+		return a;
+	}
+}
+----------------------------------------------------------------------------------
+Class 3:Triangle
+public class Triangle extends Shape
+{
+	double a;
+	public Triangle()
+	{
+		
+	}
+	public Triangle(double b,double h)
+	{
+		super(h,b);
+	}
+	public double area()
+	{
+		a=0.5*getH()*getB();
+		return a;
+	}
+}
+----------------------------------------------------------------------------------
+Class 4:TestShape
+import java.util.Scanner;
+public class TestShape {
+
+	public static void main(String[] args) 
+	{
+		int q,a,b;
+		Shape w;
+		Scanner sc= new Scanner(System.in);
+		do
+		{
+			System.out.println("1:area of rectangle");
+			System.out.println("2:area of triangle");
+			System.out.println("3:exit");
+			q=sc.nextInt();
+			switch(q)
+			{
+			case 1: System.out.println("enter the height of Triangle:");
+					a=sc.nextInt();
+					System.out.println("enter the base of trianle:");
+					b=sc.nextInt();
+					w=new Triangle(a,b);
+					System.out.println("area of triangle is "+w.area());
+					break;
+			case 2: System.out.println("enter the len of side of Rectangle:");
+					a=sc.nextInt();
+					w=new Rectangle(a);
+					System.out.println("area of triangle is "+w.area());
+					break;
+			case 3: System.out.println("program terminated");
+			}
+		}while(q!=3);
+		sc.close();
+	}
+
+}
+ 

@@ -1,0 +1,233 @@
+Interface 1:Vehicle
+public interface Vehicle 
+{
+	public void gearChange(int a);
+	public void SpeedUp();
+	public void Speeddown();
+	public void applyBrakes();
+	public void display();
+}
+-------------------------------------------------------------------
+Class 1:Bike
+public class Bike implements Vehicle
+{
+	int speed,gear;
+	public Bike()
+	{
+		speed=0;
+		gear=0;
+	}
+	public void gearChange(int a)
+	{
+		if(a>0 && a<8)
+		{
+			gear=a;
+			System.out.println("gear change");
+		}
+		else
+			System.out.println("can not change gear");
+	}
+	public void SpeedUp()
+	{
+		if(speed>0 && speed<30)
+		{
+			speed=speed+10;
+		}
+		else
+			System.out.println("speed in limit");
+	}
+	public void Speeddown()
+	{
+		if(speed >=0)
+		{
+			speed=speed-5;
+			System.out.println("speed change sucessfully");
+		}
+		else
+			System.out.println("speed cant be less than this");
+	}
+	public void applyBrakes()
+	{
+		speed=0;
+	}
+	public void display()
+	{
+		System.out.println("speed : "+speed+"\tgear : "+gear);
+	}
+}
+----------------------------------------------------------------------------
+Class 2:Bicycle
+public class Bicycle implements Vehicle
+{
+	int speed,gear;
+	public Bicycle()
+	{
+		speed=0;
+		gear=0;
+	}
+	public void gearChange(int a)
+	{
+		if(a<22 && a>0)
+		{	
+			gear=a;
+			System.out.println("gear change sucessfully");
+		}
+		else
+			System.out.println("can not changr gear");
+	}
+	public void SpeedUp()
+	{
+		if(speed>0 && speed<30)
+		{
+			speed=speed+5;
+			System.out.println("speed change sucessfully");
+		}
+		else
+			System.out.println("speed in limit");
+	}
+	public void Speeddown()
+	{
+		if(speed >=0)
+		{
+			speed=speed-5;
+			System.out.println("speed change sucessfully");
+		}
+		else
+			System.out.println("speed cant be less than this");
+	}
+	public void applyBrakes()
+	{
+		speed=0;
+	}
+	public void display()
+	{
+		System.out.println("speed : "+speed+"\tgear : "+gear);
+	}
+}
+-----------------------------------------------------------------------------------
+Class 3:Car
+public class Car implements Vehicle
+{
+	int speed,gear;
+	public Car()
+	{
+		speed=0;
+		gear=0;
+	}
+	public void gearChange(int a)
+	{
+		if(a>0 && a<6)
+		{
+			gear=a;
+			System.out.println("gear change");
+		}
+		else
+			System.out.println("can not change gear");
+	}
+	public void SpeedUp()
+	{
+		if(speed>0 && speed<30)
+		{
+			speed=speed+15;
+		}
+		else
+			System.out.println("spped limit");
+	}
+	public void Speeddown()
+	{
+		if(speed >=0)
+		{
+			speed=speed-5;
+			System.out.println("speed change sucessfully");
+		}
+		else
+			System.out.println("speed cant be less than this");
+	}
+	public void applyBrakes()
+	{
+		speed=0;
+	}
+	public void display()
+	{
+		System.out.println("speed : "+speed+"\tgear : "+gear);
+	}
+}
+--------------------------------------------------------------------------------
+Class 4:TestVehicle
+import java.util.Scanner;
+public class TeatVehicle {
+
+	public static void main(String[] args) 
+	{
+		 Vehicle v=new Car();
+		Scanner sc=new Scanner(System.in);
+		int x,y,a;
+		do
+		{
+			System.out.println("Select vehical");
+			System.out.println("1:\t for Bicycle");
+			System.out.println("2:\t for Bike");
+			System.out.println("3:\t for car");
+			System.out.println("4:\t for exit");
+			System.out.println("Enter your choice : ");
+			x = sc.nextInt();
+			switch(x)
+			{
+			case 1:
+				v= new Bicycle();
+				break;
+			case 2:
+				v= new Bike();
+				break;
+			case 3:
+				v= new Car();
+				break;
+			case 4:
+				System.exit(0);
+			default:
+				System.out.println(" Invalid choice terminating program");
+				System.exit(0);
+			}
+			do
+			{
+				System.out.println("Select operation");
+				System.out.println("1:\t for gear change");
+				System.out.println("2:\t for speed up");
+				System.out.println("3:\t for speeddown");
+				System.out.println("4:\t for apply brak");
+				System.out.println("5:\t for display");
+				System.out.println("6:\t change vehical");
+				System.out.println("Enter your choice : ");
+				y = sc.nextInt();
+				switch(y)
+				{
+				case 1:
+					System.out.println(" Enter gear number:");
+					a= sc.nextInt();
+					v.gearChange(a);
+					break;
+				case 2:
+					v.SpeedUp();
+					break;
+				case 3:
+					v.Speeddown();
+					break;
+				case 4:
+					v.applyBrakes();
+					break;
+				case 5:
+					v.display();
+					break;
+				case 6:
+					System.out.println(" Vehicle change");
+					break;
+				default:
+					System.out.println(" Invalid choice");
+				}
+			}while(y!= 6 ); 
+		}while(x != 4); 
+		sc.close();
+	}
+
+}
+

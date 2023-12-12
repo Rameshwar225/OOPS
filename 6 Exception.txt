@@ -1,0 +1,144 @@
+Class 1:Employee
+import java.util.Scanner;
+public class Employee 
+{
+	String empName, address, emailId;
+	long mobileNo;
+	int empId;
+	double basicPay, netSalary,grosSalary, hra, da, pf, staffClubFund;
+	static int id=1000;
+	public Employee()
+	{
+		id++;
+		empId=id;
+	}
+	Scanner sc=new Scanner(System.in);
+	public void readData()
+	{
+		System.out.println("Enter the name of employee ");
+		empName=sc.next();
+		System.out.print("Enter Address: ");
+		address = sc.next();
+		System.out.print("Enter email id: ");
+		emailId = sc.next();
+		System.out.print("Enter Mobile No.: ");
+		mobileNo=sc.nextLong();
+	}
+	public void displayEmployee()
+	{
+		System.out.println("ID\tName\taddress\tEmail id\tmobile no.");
+		System.out.println(empId+"\t"+empName+"\t"+address+"\t"+emailId+"\t"+mobileNo);
+	}
+	public void calculateSalary()
+	{
+		da = basicPay*.97; 
+		hra = basicPay*.10; 
+		pf = basicPay*.12; 
+		staffClubFund = basicPay*0.001; 
+		grosSalary = basicPay + da + hra; 
+		netSalary = grosSalary- pf - staffClubFund;
+	}
+	public void printSalarySlip()
+	{
+		System.out.println(" BASIC PAY :"+basicPay);
+		System.out.println(" DA :"+da);
+		System.out.println(" HRA :"+hra);
+		System.out.println(" PF :"+pf);
+		System.out.println(" GROSS SALARY :"+grosSalary);
+		System.out.println(" NET SALARY :"+ netSalary);
+	}
+}
+---------------------------------------------------------------------------------------------------
+Class 2: Programmer
+public class Programmer extends Employee
+{
+	public Programmer()
+	{
+		
+	}
+	public void readProgrammer()
+	{
+		readData(); 
+		System.out.print("BASIC PAY of programmer: ");
+		basicPay=sc.nextDouble();
+	}
+}
+------------------------------------------------------------------------------------------------
+Class 3: TeamLead
+public class TeamLead extends Employee
+{
+	public TeamLead()
+	{
+		
+	}
+	public void readTeamLead()
+	{
+		readData(); 
+		System.out.print("BASIC PAY of TeamLead: ");
+		basicPay=sc.nextDouble();
+	}
+}
+---------------------------------------------------------------------------------------------------
+Class 4:AsstProjectManager
+public class AsstProjectManager extends Employee
+{
+	public AsstProjectManager()
+	{
+		
+	}
+	public void readAsstProjectManager()
+	{
+		readData(); 
+		System.out.print("BASIC PAY of AsstProjectManager: ");
+		basicPay=sc.nextDouble();
+	}
+}
+--------------------------------------------------------------------------------------------------
+Class 5:ProjectManager
+public class ProjectManager extends Employee
+{
+	public ProjectManager()
+	{
+		
+	}
+	public void readProjectManager()
+	{
+		readData(); 
+		System.out.print("BASIC PAY of ProjectManager: ");
+		basicPay=sc.nextDouble();
+	}
+}
+--------------------------------------------------------------------------------------------------
+Class 6:TestEmployee
+public class TestEmployee {
+
+	public static void main(String[] args)
+	{
+		Programmer p = new Programmer();
+		AsstProjectManager ap = new AsstProjectManager();
+		TeamLead tl = new TeamLead();
+		ProjectManager pm = new ProjectManager();
+		System.out.println(" Programmer ");
+		p.readProgrammer();
+		System.out.println(" ProjectManager ");
+		pm.readProjectManager();
+		System.out.println(" TeamLead ");
+		tl.readTeamLead();
+		System.out.println(" AsstProjectManager ");
+		ap.readAsstProjectManager();
+		p.calculateSalary();
+		pm.calculateSalary();
+		tl.calculateSalary();
+		ap.calculateSalary();
+		System.out.println(" Programmer Salary Slip");
+		p.printSalarySlip();
+		System.out.println(" Project Manager Salary Slip");
+		pm.printSalarySlip();
+		System.out.println(" Team Lead Salary Slip");
+		tl.printSalarySlip();
+		System.out.println("Asst Project Manager Salary Slip");
+		ap.printSalarySlip();
+	}
+
+}
+

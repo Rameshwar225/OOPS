@@ -1,0 +1,84 @@
+Interface 1:Car
+public interface Car 
+{
+	public void buildCar();
+}
+--------------------------------------------------------
+Class 1: SUV
+public class SUV implements Car
+{
+	public void buildCar()
+	{
+		System.out.println("SUV car complete");
+	}
+
+}
+---------------------------------------------------------
+Class 2: Sedan
+public class Sedan implements Car
+{
+	public void buildCar()
+	{
+		System.out.println("Sedan car complete");
+	}
+}
+----------------------------------------------------------
+Class 3:Hatchback
+public class Hatchback implements Car 
+{
+	public void buildCar()
+	{
+		System.out.println("Hatchback car complete");
+	}
+}
+-----------------------------------------------------------------
+Class 4:CarAssembler
+public class CarAssembler 
+{
+	public void buildCar(Car carType)
+	{
+		carType.buildCar();
+	}
+}
+----------------------------------------------------------------
+Class 5:CarFactory
+public class CarFactory 
+{
+	public Car getCar(String carType)
+	{
+		Car car=null;
+		CarAssembler assembler= new CarAssembler();
+		if(carType.compareToIgnoreCase("Hatchback")==0)
+		{
+			car=new Hatchback();
+			assembler.buildCar(car);
+		}
+		if(carType.compareToIgnoreCase("Sedan")==0)
+		{
+			car=new Sedan();
+			assembler.buildCar(car);
+		}
+		if(carType.compareToIgnoreCase("SUV")==0)
+		{
+			car=new SUV();
+			assembler.buildCar(car);
+		}
+		return car;
+	}
+}
+---------------------------------------------------------------------
+Class 6:TestFactory
+public class TestFactory 
+{
+	public static void main(String[] args) 
+	{
+		CarFactory factory=new CarFactory();
+		Sedan se=(Sedan)factory.getCar("Sedan");
+		Hatchback hb=(Hatchback)factory.getCar("Hatchback");
+		SUV suv=(SUV)factory.getCar("SUV");
+
+	}
+}
+
+
+
